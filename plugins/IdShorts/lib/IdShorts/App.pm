@@ -21,7 +21,10 @@ sub redirect_mode {
     
     require MT::Entry;
     my $e = MT::Entry->load ($id) or return $app->error ('Unknown entry');
-    return $app->redirect ($e->permalink);
+    
+    require MT::Util;
+    my $link = MT::Util::strip_index ($e->permalink, $e->blog);
+    return $app->redirect ($link);
 }
 
 
