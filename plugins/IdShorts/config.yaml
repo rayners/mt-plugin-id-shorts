@@ -1,0 +1,13 @@
+name: Id Shorts
+version: 0.5
+description: Redirects to posts based on id
+
+applications:
+    id_shorts:
+        handler: IdShorts::App
+        methods:
+            redirect: $IdShorts::IdShorts::App::redirect_mode
+
+config_settings:
+    IdShortsScript:
+        default: id-shorts.cgi
