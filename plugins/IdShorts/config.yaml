@@ -11,3 +11,7 @@ applications:
 config_settings:
     IdShortsScript:
         default: id-shorts.cgi
+
+object_types:
+    entry:
+	id_shorts_clicks: integer meta
