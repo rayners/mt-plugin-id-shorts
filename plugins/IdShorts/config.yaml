@@ -8,6 +8,11 @@ applications:
         methods:
             redirect: $IdShorts::IdShorts::App::redirect_mode
 
+settings:
+    track_clicks:
+	scope: blog
+	default: 0
+
 config_settings:
     IdShortsScript:
         default: id-shorts.cgi
