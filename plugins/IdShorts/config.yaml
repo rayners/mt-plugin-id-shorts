@@ -10,8 +10,8 @@ applications:
 
 settings:
     track_clicks:
-	scope: blog
-	default: 0
+      scope: blog
+      default: 0
 
 config_settings:
     IdShortsScript:
@@ -19,4 +19,4 @@ config_settings:
 
 object_types:
     entry:
-	id_shorts_clicks: integer meta
+      id_shorts_clicks: integer meta
