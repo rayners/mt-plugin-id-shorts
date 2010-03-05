@@ -3,6 +3,12 @@ version: 0.5.1
 description: Redirects to posts based on id
 
 applications:
+    cms:
+        callbacks:
+            template_source.edit_entry: >-
+	      $IdShorts::IdShorts::CMS::edit_entry_source
+            template_param.edit_entry: >-
+	      $IdShorts::IdShorts::CMS::edit_entry_param
     id_shorts:
         handler: IdShorts::App
         methods:
