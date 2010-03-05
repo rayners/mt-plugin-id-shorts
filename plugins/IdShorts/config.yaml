@@ -8,6 +8,7 @@ applications:
         methods:
             redirect: $IdShorts::IdShorts::App::redirect_mode
 
+blog_config_template: config.tmpl
 settings:
     track_clicks:
       scope: blog
