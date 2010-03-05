@@ -7,8 +7,8 @@ applications:
         callbacks:
             template_source.edit_entry: >-
               $IdShorts::IdShorts::CMS::edit_entry_source
-            template_param.edit_entry: >-
-              $IdShorts::IdShorts::CMS::edit_entry_param
+            cms_edit.entry: >-
+              $IdShorts::IdShorts::CMS::cms_edit_entry
     id_shorts:
         handler: IdShorts::App
         methods:
