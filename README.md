@@ -1,6 +1,6 @@
 # ID Shorts
 
-Author: David Raynes
+Author: David Raynes  
 Testing and Generally Inspiring Fellow: Matt Jacobs
 
 ## Overview
