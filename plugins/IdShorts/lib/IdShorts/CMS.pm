@@ -13,10 +13,16 @@ sub edit_entry_source {
     return 1;
 }
 
-sub edit_entry_param {
-    my ( $cb, $app, $params, $tmpl ) = @_;
+sub cms_edit_entry {
+  my ($cb, $app, $id, $obj, $params) = @_;
 
-    return 1;
+  require MT::Entry;
+  return 1 if (!$id);
+  #return 1 if (!$obj->status == MT::Entry::RELEASE());
+
+  $params->{id_shorts_clicks} = $obj->id_shorts_clicks;
+
+  return 1;
 }
 
 1;
