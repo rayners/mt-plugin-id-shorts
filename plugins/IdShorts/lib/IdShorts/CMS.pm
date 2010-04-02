@@ -14,15 +14,14 @@ sub edit_entry_source {
 }
 
 sub cms_edit_entry {
-  my ($cb, $app, $id, $obj, $params) = @_;
+    my ( $cb, $app, $id, $obj, $params ) = @_;
 
-  require MT::Entry;
-  return 1 if (!$id);
-  #return 1 if (!$obj->status == MT::Entry::RELEASE());
+    require MT::Entry;
+    return 1 if ( !$id );
 
-  $params->{id_shorts_clicks} = $obj->id_shorts_clicks;
+    $params->{id_shorts_clicks} = $obj->id_shorts_clicks;
 
-  return 1;
+    return 1;
 }
 
 1;
