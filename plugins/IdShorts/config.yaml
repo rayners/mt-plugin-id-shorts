@@ -30,3 +30,7 @@ config_settings:
 object_types:
     entry:
       id_shorts_clicks: integer meta
+
+tags:
+  function:
+    entryshorturl: $IdShorts::IdShorts::Tags::short_url
