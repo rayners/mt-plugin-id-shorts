@@ -19,6 +19,9 @@ settings:
     track_clicks:
       scope: blog
       default: 0
+    url_template:
+      scope: blog
+      default: "<mt:blogurl><mt:entryid>"
 
 config_settings:
     IdShortsScript:
