@@ -34,7 +34,7 @@ out_like(
         __mode      => 'view',
         _type       => 'entry'
     },
-    qr/0 shorts clicks/,
+    qr/0 shorts clicks on <a href="http:\/\/narnia\.na\/nana\/1">/,
     "Found the li for short_clicks"
 );
 
