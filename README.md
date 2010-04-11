@@ -36,3 +36,10 @@ id-shorts.cgi. Of course, you'll want to change the path to match the actual
 location of your MT install and make the sure the matched text doesn't conflict
 with a file or another rewrite rule. After this, you should be able to visit
 http://super-awesome-url.biz/[mt:EntryID] and go to the entry.
+
+### Tags
+
+This plugin adds the `<mt:entryshorturl>` tag.  The output of this tag is based
+on the blog level plugin setting for the short url template, which defaults to
+`<mt:blogurl><mt:entryid>`.
+
