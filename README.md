@@ -36,11 +36,13 @@ directory.
 
 ## Usage
 
-1. Visit http://super-awesome-url.biz/mt-directory/mt/id-shorts.cgi?id=[mt:EntryID].
-
-2. Get sent back to the entry's permalink.
-
-3. Profit!
+1. Edit an entry or page
+2. Find the **Short URL Path** setting under "basename":
+   <img src="https://img.skitch.com/20110307-xshg3f688qaq2sr9rtmhaekwnb.png" style="border: 1px solid #333" />
+3. Generate a random shortcode for the entry or page, or enter a custom path
+4. Save the entry
+5. Click on the "Link" link next to the shortcode field to visit the short url.
+4. Get sent back to the entry or page's permalink.
 
 ### Rewrites
 
