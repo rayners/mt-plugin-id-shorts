@@ -1,7 +1,8 @@
 # ID Shorts
 
 Author: David Raynes
-Extensions: Steve Ivy
+
+Shortcode Additions: Steve Ivy
 
 Testing and Generally Inspiring Fellow: Matt Jacobs
 
