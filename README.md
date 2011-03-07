@@ -37,10 +37,10 @@ directory.
 ## Usage
 
 1. Edit an entry or page
-2. Find the **Short URL Path** setting under "basename":
+2. Find the **Short URL Path** setting under "basename":<br />
    <img src="https://img.skitch.com/20110307-xshg3f688qaq2sr9rtmhaekwnb.png" style="border: 1px solid #333" />
 3. Generate a random shortcode for the entry or page, or enter a custom path
-4. Save the entry
+4. Save the entry.
 5. Click on the "Link" link next to the shortcode field to visit the short url.
 4. Get sent back to the entry or page's permalink.
 
@@ -63,4 +63,10 @@ http://super-awesome-url.biz/[mt:EntryID] and go to the entry.
 This plugin adds the `<mt:entryshorturl>` tag.  The output of this tag is based
 on the blog level plugin setting for the short url template, which defaults to
 `<mt:blogurl><mt:var name='id_shorts_path' />`.
+
+### Plugin Settings:
+
+IdShorts provides two blog-level plugin settings:
+* **Track Clicks**: With this option selected, IdShorts will record each time an entries short url is clicked, and display this value on the edit entry (or page) screen.
+* **Short URL Template**: This micro-template should be updated to match any custom paths set in your apache rewrite rules. For example, if you limit shorted urls to a `/s/` namespace on your server, include that 
 
