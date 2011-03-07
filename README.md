@@ -68,5 +68,5 @@ on the blog level plugin setting for the short url template, which defaults to
 
 IdShorts provides two blog-level plugin settings:
 * **Track Clicks**: With this option selected, IdShorts will record each time an entries short url is clicked, and display this value on the edit entry (or page) screen.
-* **Short URL Template**: This micro-template should be updated to match any custom paths set in your apache rewrite rules. For example, if you limit shorted urls to a `/s/` namespace on your server, include that 
+* **Short URL Template**: This micro-template should be updated to match any custom paths set in your apache rewrite rules. For example, if you limit shorted urls to a `/s/` namespace on your server, your **Short URL Template** value should be `<mt:blogurl>/s/<mt:var name='id_shorts_path' />`.
 

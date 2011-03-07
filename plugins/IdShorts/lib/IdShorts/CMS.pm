@@ -105,7 +105,7 @@ sub edit_entry_source {
         label="Short URL Path"
         hint="Short URL or vanity URL path (some/vanity/path with no leading /)<br/>Defaults to the entry ID."
         show_hint="1">
-            <input type="text" disabled="disabled" name="id_shorts_path" id="id_shorts_path" value="<mt:var name="id_shorts_path" />" />
+            <input type="text" name="id_shorts_path" id="id_shorts_path" value="<mt:var name="id_shorts_path" />" />
             <a href="javascript:return false;" onclick="generate()">Generate Shortcode</a><mt:if name="id_shorts_path"><span id="short-link-link"> | <a href="<mt:var name="id_shorts_url" />">Link</a></span></mt:if>          
     </mtapp:setting>
 FIELDHTML
