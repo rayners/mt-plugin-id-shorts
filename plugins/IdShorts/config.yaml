@@ -1,6 +1,6 @@
 name: Id Shorts
-version: 0.7.0
-description: Redirects to posts based on id
+version: 0.8.0
+description: Redirects to posts based on a field on entry
 
 applications:
     cms:
@@ -30,6 +30,7 @@ config_settings:
 object_types:
     entry:
       id_shorts_clicks: integer meta
+      id_shorts_path: string meta
 
 tags:
   function:
