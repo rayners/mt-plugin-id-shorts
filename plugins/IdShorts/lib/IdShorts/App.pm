@@ -15,12 +15,17 @@ sub init {
 
 sub redirect_mode {
     my $app = shift;
-    my $id = $app->path_info || $app->param('id');
+    my $identifier = $app->path_info || $app->param('id');
 
-    return $app->error('id required') if ( !$id );
+    return $app->error('required') if ( !$identifier );
 
     require MT::Entry;
-    my $e = MT::Entry->load($id) or return $app->error('Unknown entry');
+    my $e = MT::Entry->load($identifier);
+    my @meta_entries = MT::Entry->search_by_meta('id_shorts_path',$identifier,
+                                                      {},
+                                                      { blog_id => $app->{blog_id} || '*'});
+    $e ||= $meta_entries[0];
+        
     $app->{__entry} = $e;
 
     require MT::Util;

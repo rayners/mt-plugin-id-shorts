@@ -1,5 +1,6 @@
 name: Id Shorts
-version: 0.8.0
+version: 0.9.0
+schema_version: 0.1
 description: Redirects to posts based on a field on entry
 
 applications:
@@ -7,8 +8,16 @@ applications:
         callbacks:
             template_source.edit_entry: >-
               $IdShorts::IdShorts::CMS::edit_entry_source
+            template_source.edit_page: >-
+              $IdShorts::IdShorts::CMS::edit_entry_source
             cms_edit.entry: >-
               $IdShorts::IdShorts::CMS::cms_edit_entry
+            cms_edit.page: >-
+              $IdShorts::IdShorts::CMS::cms_edit_entry
+            cms_pre_save.entry: >-
+              $IDShorts::IdShorts::CMS::pre_save_entry
+            cms_pre_save.page: >-
+              $IDShorts::IdShorts::CMS::pre_save_entry
     id_shorts:
         handler: IdShorts::App
         methods:
@@ -21,7 +30,7 @@ settings:
       default: 0
     url_template:
       scope: blog
-      default: "<mt:blogurl><mt:entryid>"
+      default: "<mt:blogurl><mt:var name='id_shorts_path' />"
 
 config_settings:
     IdShortsScript:
@@ -29,6 +38,9 @@ config_settings:
 
 object_types:
     entry:
+      id_shorts_clicks: integer meta
+      id_shorts_path: string meta
+    page:
       id_shorts_clicks: integer meta
       id_shorts_path: string meta
 
