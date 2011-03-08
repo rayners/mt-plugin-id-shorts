@@ -118,6 +118,7 @@ FIELDHTML
 sub pre_save_entry {
     my ($cb, $app, $obj, $original) = @_;
     if (my $path = $app->param('id_shorts_path')) {
+        $path =~ s/^\///;
         $obj->id_shorts_path($path);
     }
     return 1;
