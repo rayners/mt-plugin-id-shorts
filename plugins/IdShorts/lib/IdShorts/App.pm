@@ -21,11 +21,12 @@ sub redirect_mode {
 
     require MT::Entry;
     my $e = MT::Entry->load($identifier);
-    my @meta_entries = MT::Entry->search_by_meta('id_shorts_path',$identifier,
-                                                      {},
-                                                      { blog_id => $app->{blog_id} || '*'});
-    $e ||= $meta_entries[0];
-        
+    unless ($e) {
+        my @meta_entries =
+            MT::Entry->search_by_meta( 'id_shorts_path', $identifier, {}, { blog_id => $app->{blog_id} || '*' } );
+        $e ||= $meta_entries[0];
+    }
+
     $app->{__entry} = $e;
 
     require MT::Util;
@@ -41,11 +42,7 @@ sub takedown {
         # link was successful
         # record it if they want
         my $plugin = MT->component('idshorts');
-        if ($plugin->get_config_value(
-                'track_clicks', 'blog:' . $e->blog_id
-            )
-            )
-        {
+        if ( $plugin->get_config_value( 'track_clicks', 'blog:' . $e->blog_id ) ) {
 
             # blog has tracking turned on
             # so let's track it
