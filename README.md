@@ -71,3 +71,8 @@ IdShorts provides two blog-level plugin settings:
 * **Track Clicks**: With this option selected, IdShorts will record each time an entries short url is clicked, and display this value on the edit entry (or page) screen.
 * **Short URL Template**: This micro-template should be updated to match any custom paths set in your apache rewrite rules. For example, if you limit shorted urls to a `/s/` namespace on your server, your **Short URL Template** value should be `<mt:blogurl>/s/<mt:var name='id_shorts_path' />`.
 
+## Credits
+
+* IdShorts was written by David Raynes <rayners@rayners.org>
+* Extensive additions were made by Steve Ivy <steve@wallrazer.com>, courtesy of [Endevver Consulting](http://endevver.com)
+* The NewBase60 javascript used in generating random alpha-numeric shortcodes is courtesy Tantek Çelik: <http://tantek.pbworks.com/NewBase60>, translated from the original CASSIS by Edward O'Connor <hober0@gmail.com>, and was released under CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>. Steve Ivy made some tweaks to remove `$`s.
