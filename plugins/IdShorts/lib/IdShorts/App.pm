@@ -20,11 +20,19 @@ sub redirect_mode {
     return $app->error('required') if ( !$identifier );
 
     require MT::Entry;
+    # It could be an entry id
     my $e = MT::Entry->load($identifier);
     unless ($e) {
+        # Or it could be a path or custom code
         my @meta_entries =
             MT::Entry->search_by_meta( 'id_shorts_path', $identifier, {}, { blog_id => $app->{blog_id} || '*' } );
         $e ||= $meta_entries[0];
+    }
+    unless ($e) {
+        # Or it could be a bad code
+        $app->response_code("404");
+        $app->response_message("Not Found");
+        return $app->error('Object not found.');
     }
 
     $app->{__entry} = $e;
