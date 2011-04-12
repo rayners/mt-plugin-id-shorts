@@ -21,8 +21,13 @@ sub redirect_mode {
 
     require MT::Entry;
     # It could be an entry id
-    my $e = MT::Entry->load($identifier);
+    
+    my $e;
+    if ($identifier =~ /^[\d]+$/) {
+        $e = MT::Entry->load($identifier);
+    }
     unless ($e) {
+        MT->log('checking meta: id_shorts_path');
         # Or it could be a path or custom code
         my @meta_entries =
             MT::Entry->search_by_meta( 'id_shorts_path', $identifier, {}, { blog_id => $app->{blog_id} || '*' } );
@@ -34,7 +39,7 @@ sub redirect_mode {
         $app->response_message("Not Found");
         return $app->error('Object not found.');
     }
-
+    
     $app->{__entry} = $e;
 
     require MT::Util;
