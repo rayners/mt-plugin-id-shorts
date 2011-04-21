@@ -48,7 +48,8 @@ options:
     fieldset: general
     type: page
     order: 3
-    scope: blog
+    scope: system
+    all_blogs: 1
 
 config_settings:
     IdShortsScript:
