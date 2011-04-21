@@ -53,7 +53,7 @@ sub redirect_mode {
 
             use File::Spec;
             $file = File::Spec->catfile( $arch_root, $file );
-            if ($file) {
+            if ($file && -f $file) {
                 open( my $custom_404, '<', $file )
                     or die "Could not open the error document! ($!)";
                 my @lines;
