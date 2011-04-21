@@ -1,5 +1,5 @@
 name: Id Shorts
-version: 0.9.0
+version: 0.9.1
 schema_version: 0.1
 description: Redirects to posts based on a field on entry
 
@@ -23,14 +23,32 @@ applications:
         methods:
             redirect: $IdShorts::IdShorts::App::redirect_mode
 
-blog_config_template: config.tmpl
-settings:
-    track_clicks:
-      scope: blog
-      default: 0
-    url_template:
-      scope: blog
-      default: "<mt:blogurl><mt:var name='id_shorts_path' />"
+options:
+  fieldsets:
+    general:
+      label: General
+  track_clicks:
+    label: Track Clicks
+    type: checkbox
+    default: 0
+    fieldset: general
+    scope: blog
+    order: 1
+  url_template:
+    label: Short URL Template
+    default: "<mt:blogurl><mt:var name='id_shorts_path' />"
+    size: 100
+    type: text
+    fieldset: general
+    scope: blog
+    order: 2
+  custom_404:
+    label: Custom 404 Page
+    hint: 'Select a page from your system to service as a 404 page. This page cannot contain PHP, it must be pure HTML.'
+    fieldset: general
+    type: page
+    order: 3
+    scope: blog
 
 config_settings:
     IdShortsScript:
