@@ -67,9 +67,14 @@ on the blog level plugin setting for the short url template, which defaults to
 
 ### Plugin Settings:
 
-IdShorts provides two blog-level plugin settings:
+IdShorts provides two blog-level plugin settings, and one system-level setting. The blog-level settings are:
+
 * **Track Clicks**: With this option selected, IdShorts will record each time an entries short url is clicked, and display this value on the edit entry (or page) screen.
 * **Short URL Template**: This micro-template should be updated to match any custom paths set in your apache rewrite rules. For example, if you limit shorted urls to a `/s/` namespace on your server, your **Short URL Template** value should be `<mt:blogurl>/s/<mt:var name='id_shorts_path' />`.
+
+The system level-setting is:
+
+* **404 Document**: Because IdShorts can be configured (via mod_rewrite) to look for a short url when a file or directory is not found, it can bypass Apache's `ErrorDocument 404` handling. In these (hopefully rare) cases, you can tell IdShorts what file to serve to users to when both a file-system check and a short-url check have failed.
 
 ## Credits
 

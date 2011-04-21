@@ -24,6 +24,8 @@ applications:
             redirect: $IdShorts::IdShorts::App::redirect_mode
 
 blog_config_template: config.tmpl
+system_config_template: system_config.tmpl
+
 settings:
     track_clicks:
       scope: blog
@@ -31,6 +33,9 @@ settings:
     url_template:
       scope: blog
       default: "<mt:blogurl><mt:var name='id_shorts_path' />"
+    err_doc:
+      scope: system
+      default: ""
 
 config_settings:
     IdShortsScript:

@@ -18,7 +18,10 @@ sub redirect_mode {
     my $identifier = $app->path_info || $app->param('id');
 
     return $app->error('required') if ( !$identifier );
-
+    
+    my $plugin = MT->component('idshorts');
+    my $err_doc = $plugin->get_config_value( 'err_doc' );
+    
     require MT::Entry;
     # It could be an entry id
     
@@ -37,6 +40,16 @@ sub redirect_mode {
         # Or it could be a bad code
         $app->response_code("404");
         $app->response_message("Not Found");
+        
+        if ($err_doc){
+            open ERR_DOC, $err_doc or die ("Could not open the error document!");
+            my @lines;
+            while (<ERR_DOC>) {
+                push @lines, $_;
+            }
+            return $app->response_content(join "\n", @lines);
+        }
+        
         return $app->error('Object not found.');
     }
     
