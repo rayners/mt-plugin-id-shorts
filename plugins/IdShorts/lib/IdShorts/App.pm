@@ -42,9 +42,9 @@ sub redirect_mode {
         $app->response_message("Not Found");
         
         if ($err_doc){
-            open ERR_DOC, $err_doc or die ("Could not open the error document!");
+            open(my $ERR_DOC, '<', $err_doc) or die "Could not open the error document! ($!)";
             my @lines;
-            while (<ERR_DOC>) {
+            while (<$ERR_DOC>) {
                 push @lines, $_;
             }
             return $app->response_content(join "\n", @lines);
