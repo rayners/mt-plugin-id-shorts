@@ -1,8 +1,8 @@
 # ID Shorts
 
 Author: David Raynes
-
 Shortcode Additions: Steve Ivy
+Config Assistant Conversion: Byrne Reese
 
 Testing and Generally Inspiring Fellow: Matt Jacobs
 
