@@ -44,7 +44,7 @@ options:
     order: 2
   custom_404:
     label: Custom 404 Page
-    hint: 'Select a page from your system to service as a 404 page. This page cannot contain PHP, it must be pure HTML.'
+    hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
     fieldset: general
     type: page
     order: 3
