@@ -31,13 +31,13 @@ sub redirect_mode {
         $e = MT::Entry->load($identifier);
     }
     unless ($e) {
-        MT->log('checking meta: id_shorts_path');
+        MT->log("checking meta: id_shorts_path for $identifier");
 
         # Or it could be a path or custom code
         my @meta_entries
             = MT::Entry->search_by_meta( 'id_shorts_path', $identifier, {},
             { blog_id => $app->{blog_id} || '*' } );
-        $e ||= $meta_entries[0];
+        $e = $meta_entries[0];
     }
     unless ($e) {
 
