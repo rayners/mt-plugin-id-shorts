@@ -10,8 +10,8 @@ sub cms_edit_entry {
     require MT::Entry;
     return 1 if ( !$id );
 
-    $params->{id_shorts_clicks} = $obj->id_shorts_clicks;
-    $params->{id_shorts_path} = $obj->id_shorts_path;
+    $params->{id_shorts_clicks} = $obj->meta('id_shorts_clicks');
+    $params->{id_shorts_path} = $obj->meta('id_shorts_path');
 
     require IdShorts::Util;
     $params->{id_shorts_url} = IdShorts::Util->short_url_for($obj);
