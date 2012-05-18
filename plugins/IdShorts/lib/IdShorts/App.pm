@@ -31,7 +31,7 @@ sub redirect_mode {
         $e = MT::Entry->load($identifier);
     }
     unless ($e) {
-        MT->log("checking meta: id_shorts_path for $identifier");
+        #MT->log("checking meta: id_shorts_path for $identifier");
 
         # Or it could be a path or custom code
         my @meta_entries

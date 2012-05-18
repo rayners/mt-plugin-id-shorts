@@ -1,5 +1,5 @@
 name: Id Shorts
-version: 1.0.1
+version: 1.0.2
 schema_version: 0.1
 description: Redirects to posts based on a field on entry
 
