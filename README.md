@@ -51,12 +51,12 @@ This plugin works best when you combine it with a tool like Apache's
 mod_rewrite. Add this to your Apache config or .htaccess file:
 
     RewriteEngine On
-    RewriteRule ^(\d{1,6})$ /cgi-bin/mt/id-shorts.cgi?id=$1 [L,R]
+    RewriteRule ^(\d{1,6})$ /cgi-bin/mt/id-shorts.cgi?id=$1&blog_id=<mt:BlogID> [L,R]
 
 This says any one to six digit string after the hostname will be passed to 
-id-shorts.cgi. Of course, you'll want to change the path to match the actual
+`id-shorts.cgi` through the parameter `id`. Of course, you'll want to change the path to match the actual
 location of your MT install and make the sure the matched text doesn't conflict
-with a file or another rewrite rule. After this, you should be able to visit
+with a file or another rewrite rule. Also note that the `blog_id` parameter passes the current blog ID along; this is optional but required if you want to serve blog-level 404 Documents. After this, you should be able to visit
 http://super-awesome-url.biz/[mt:EntryID] and go to the entry.
 
 ### Tags
@@ -71,10 +71,10 @@ IdShorts provides two blog-level plugin settings, and one system-level setting. 
 
 * **Track Clicks**: With this option selected, IdShorts will record each time an entries short url is clicked, and display this value on the edit entry (or page) screen.
 * **Short URL Template**: This micro-template should be updated to match any custom paths set in your apache rewrite rules. For example, if you limit shorted urls to a `/s/` namespace on your server, your **Short URL Template** value should be `<mt:blogurl>/s/<mt:var name='id_shorts_path' />`.
-
-The system level-setting is:
-
 * **404 Document**: Because IdShorts can be configured (via mod_rewrite) to look for a short url when a file or directory is not found, it can bypass Apache's `ErrorDocument 404` handling. In these (hopefully rare) cases, you can tell IdShorts what file to serve to users to when both a file-system check and a short-url check have failed.
+
+Note that the 404 Document plugin setting exists at both the system and blog levels. A blog-level 404 Document will be loaded, if specified, and the system-level 404 Document will serve as a fall-back. This way, a single 404 at the system level can handle all 404 requests for a multi-blog installation, but a single blog can have a custom 404 or can be served for a different domain, for example.
+
 
 ## Credits
 

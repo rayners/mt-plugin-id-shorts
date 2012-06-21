@@ -19,13 +19,11 @@ sub redirect_mode {
 
     return $app->error('required') if ( !$identifier );
 
-    my $plugin        = MT->component('idshorts');
-    my $custom_404_id = $plugin->get_config_value('custom_404');
+    my $plugin = MT->component('idshorts');
 
     require MT::Entry;
 
     # It could be an entry id
-
     my $e;
     if ( $identifier =~ /^[\d]+$/ ) {
         $e = MT::Entry->load($identifier);
@@ -44,6 +42,14 @@ sub redirect_mode {
         # Or it could be a bad code
         $app->response_code("404");
         $app->response_message("Not Found");
+
+        # Check if the BLOG_ID environment variable was set. If it was, we
+        # want to try to load a custom 404 page at the blog level. If none at
+        # the blog level, look at the system level.
+        my $blog_id = $app->param('blog_id');
+        my $custom_404_id = $blog_id
+            ? $plugin->get_config_value('custom_404_blog', "blog:$blog_id")
+            : $plugin->get_config_value('custom_404');
 
         if ($custom_404_id) {
 

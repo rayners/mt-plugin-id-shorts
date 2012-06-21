@@ -50,6 +50,13 @@ options:
     order: 3
     scope: system
     all_blogs: 1
+  custom_404_blog:
+    label: Custom 404 Page
+    hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
+    fieldset: general
+    type: page
+    order: 3
+    scope: blog
 
 config_settings:
     IdShortsScript:
