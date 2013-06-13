@@ -53,10 +53,16 @@ sub redirect_mode {
             : $plugin->get_config_value('custom_404');
 
         if ($custom_404_id) {
+            my $custom_404_page = MT->model('page')->load($custom_404_id)
+                or die $app->log({
+                        level   => $app->model('log')->ERROR(),
+                        message => 'ID Shorts: Page ID ' . $custom_404_id
+                            . ' could not be found.',
+                        blog_id => $blog_id,
+                    });
 
-            my $custom_404_page = MT->model('page')->load($custom_404_id);
-            my $file            = $custom_404_page->archive_file;
-            my $arch_root       = $custom_404_page->blog->site_path;
+            my $file      = $custom_404_page->archive_file;
+            my $arch_root = $custom_404_page->blog->site_path;
 
             use File::Spec;
             $file = File::Spec->catfile( $arch_root, $file );
