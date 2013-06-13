@@ -1,4 +1,3 @@
-
 package IdShorts::Util;
 
 use strict;

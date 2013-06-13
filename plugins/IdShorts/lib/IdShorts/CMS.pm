@@ -1,4 +1,3 @@
-
 package IdShorts::CMS;
 
 use strict;

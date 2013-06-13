@@ -24,39 +24,39 @@ applications:
             redirect: $IdShorts::IdShorts::App::redirect_mode
 
 options:
-  fieldsets:
-    general:
-      label: General
-  track_clicks:
-    label: Track Clicks
-    type: checkbox
-    default: 0
-    fieldset: general
-    scope: blog
-    order: 1
-  url_template:
-    label: Short URL Template
-    default: "<mt:blogurl><mt:var name='id_shorts_path' />"
-    size: 100
-    type: text
-    fieldset: general
-    scope: blog
-    order: 2
-  custom_404:
-    label: Custom 404 Page
-    hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
-    fieldset: general
-    type: page
-    order: 3
-    scope: system
-    all_blogs: 1
-  custom_404_blog:
-    label: Custom 404 Page
-    hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
-    fieldset: general
-    type: page
-    order: 3
-    scope: blog
+    fieldsets:
+        general:
+            label: General
+    track_clicks:
+        label: Track Clicks
+        type: checkbox
+        default: 0
+        fieldset: general
+        scope: blog
+        order: 1
+    url_template:
+        label: Short URL Template
+        default: "<mt:blogurl><mt:var name='id_shorts_path' />"
+        size: 100
+        type: text
+        fieldset: general
+        scope: blog
+        order: 2
+    custom_404:
+        label: Custom 404 Page
+        hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
+        fieldset: general
+        type: page
+        order: 3
+        scope: system
+        all_blogs: 1
+    custom_404_blog:
+        label: Custom 404 Page
+        hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
+        fieldset: general
+        type: page
+        order: 3
+        scope: blog
 
 config_settings:
     IdShortsScript:
@@ -64,12 +64,12 @@ config_settings:
 
 object_types:
     entry:
-      id_shorts_clicks: integer meta
-      id_shorts_path: string meta
+        id_shorts_clicks: integer meta
+        id_shorts_path: string meta
     page:
-      id_shorts_clicks: integer meta
-      id_shorts_path: string meta
+        id_shorts_clicks: integer meta
+        id_shorts_path: string meta
 
 tags:
-  function:
-    entryshorturl: $IdShorts::IdShorts::Tags::short_url
+    function:
+        entryshorturl: $IdShorts::IdShorts::Tags::short_url

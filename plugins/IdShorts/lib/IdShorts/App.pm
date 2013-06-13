@@ -1,7 +1,8 @@
-
 package IdShorts::App;
 
 use strict;
+use warnings;
+
 use base qw( MT::App );
 
 sub id {'id_shorts'}
