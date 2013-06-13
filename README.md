@@ -89,6 +89,10 @@ setting. The blog-level settings are:
   custom paths set in your apache rewrite rules. For example, if you limit
   shorted urls to a `/s/` namespace on your server, your **Short URL
   Template** value should be `<mt:blogurl>/s/<mt:var name='id_shorts_path' />`.
+* **Append Query Parameter**: If Google Analytics is used on your site, this
+  option will be useful to track visits to a page vs visits to a page coming
+  from a shortcode. The query parameter and value `utm_medium=go` will be
+  appended to the redirected URL.
 * **404 Document**: Because IdShorts can be configured (via mod_rewrite) to
   look for a short url when a file or directory is not found, it can bypass
   Apache's `ErrorDocument 404` handling. In these (hopefully rare) cases, you

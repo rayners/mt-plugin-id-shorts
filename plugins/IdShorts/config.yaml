@@ -42,12 +42,20 @@ options:
         fieldset: general
         scope: blog
         order: 2
+    append_query_param:
+        label: 'Append Query Parameter'
+        hint: 'Append the query parameter <code>utm_medium=go</code> to the redirected URL, which makes it easy to track where visitors come from with Google Analytics.'
+        type: checkbox
+        default: 0
+        fieldset: general
+        scope: blog
+        order: 3
     custom_404:
         label: Custom 404 Page
         hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
         fieldset: general
         type: page
-        order: 3
+        order: 4
         scope: system
         all_blogs: 1
     custom_404_blog:
@@ -55,7 +63,7 @@ options:
         hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
         fieldset: general
         type: page
-        order: 3
+        order: 4
         scope: blog
 
 config_settings:

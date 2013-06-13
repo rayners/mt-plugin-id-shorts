@@ -20,7 +20,8 @@ sub redirect_mode {
 
     return $app->error('required') if ( !$identifier );
 
-    my $plugin = MT->component('idshorts');
+    my $plugin  = MT->component('idshorts');
+    my $blog_id = $app->param('blog_id');
 
     require MT::Entry;
 
@@ -47,7 +48,6 @@ sub redirect_mode {
         # Check if the BLOG_ID environment variable was set. If it was, we
         # want to try to load a custom 404 page at the blog level. If none at
         # the blog level, look at the system level.
-        my $blog_id = $app->param('blog_id');
         my $custom_404_id = $blog_id
             ? $plugin->get_config_value('custom_404_blog', "blog:$blog_id")
             : $plugin->get_config_value('custom_404');
@@ -86,6 +86,11 @@ sub redirect_mode {
 
     require MT::Util;
     my $link = MT::Util::strip_index( $e->permalink, $e->blog );
+
+    # Add the Google `utm_medium` query parameter if requested.
+    $link .= '?utm_medium=go'
+        if $plugin->get_config_value('append_query_param', "blog:$blog_id");
+
     return $app->redirect($link);
 }
 
