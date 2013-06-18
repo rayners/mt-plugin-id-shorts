@@ -48,8 +48,6 @@ sub redirect_mode {
         # Check if the BLOG_ID environment variable was set. If it was, we
         # want to try to load a custom 404 page at the blog level. If none at
         # the blog level, look at the system level.
-        $blog_id = $e->blog_id
-            if !$blog_id;
         my $custom_404_id = $blog_id
             ? $plugin->get_config_value('custom_404_blog', "blog:$blog_id")
             : $plugin->get_config_value('custom_404');
