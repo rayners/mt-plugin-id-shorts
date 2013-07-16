@@ -90,7 +90,7 @@ sub redirect_mode {
     # Add the Google `utm_medium` query parameter if requested.
     $blog_id = $e->blog_id
         if !$blog_id;
-    $link .= '?utm_medium=go'
+    $link .= '?utm_source=' . $identifier .'&utm_medium=go'
         if $plugin->get_config_value('append_query_param', "blog:$blog_id");
 
     return $app->redirect($link);
