@@ -1,27 +1,55 @@
 name: Id Shorts
-version: 0.7.0
-description: Redirects to posts based on id
+version: 1.0.1
+schema_version: 0.1
+description: Redirects to posts based on a field on entry
 
 applications:
     cms:
         callbacks:
             template_source.edit_entry: >-
               $IdShorts::IdShorts::CMS::edit_entry_source
+            template_source.edit_page: >-
+              $IdShorts::IdShorts::CMS::edit_entry_source
             cms_edit.entry: >-
               $IdShorts::IdShorts::CMS::cms_edit_entry
+            cms_edit.page: >-
+              $IdShorts::IdShorts::CMS::cms_edit_entry
+            cms_pre_save.entry: >-
+              $IDShorts::IdShorts::CMS::pre_save_entry
+            cms_pre_save.page: >-
+              $IDShorts::IdShorts::CMS::pre_save_entry
     id_shorts:
         handler: IdShorts::App
         methods:
             redirect: $IdShorts::IdShorts::App::redirect_mode
 
-blog_config_template: config.tmpl
-settings:
-    track_clicks:
-      scope: blog
-      default: 0
-    url_template:
-      scope: blog
-      default: "<mt:blogurl><mt:entryid>"
+options:
+  fieldsets:
+    general:
+      label: General
+  track_clicks:
+    label: Track Clicks
+    type: checkbox
+    default: 0
+    fieldset: general
+    scope: blog
+    order: 1
+  url_template:
+    label: Short URL Template
+    default: "<mt:blogurl><mt:var name='id_shorts_path' />"
+    size: 100
+    type: text
+    fieldset: general
+    scope: blog
+    order: 2
+  custom_404:
+    label: Custom 404 Page
+    hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
+    fieldset: general
+    type: page
+    order: 3
+    scope: system
+    all_blogs: 1
 
 config_settings:
     IdShortsScript:
@@ -30,6 +58,10 @@ config_settings:
 object_types:
     entry:
       id_shorts_clicks: integer meta
+      id_shorts_path: string meta
+    page:
+      id_shorts_clicks: integer meta
+      id_shorts_path: string meta
 
 tags:
   function:
