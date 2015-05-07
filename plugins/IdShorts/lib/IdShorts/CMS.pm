@@ -102,13 +102,19 @@ sub edit_entry_source {
     <mtapp:setting
         id="id_shorts_path"
         label="Short URL Path"
-        hint="Short URL or vanity URL path (some/vanity/path with no leading /)<br/>Defaults to the entry ID."
+        label_class="top-label"
+        hint="Short URL or vanity URL path; defaults to the entry ID. (<code>vanity/path</code> with no leading <code>/</code>.)"
         show_hint="1">
-            <input type="text" name="id_shorts_path" id="id_shorts_path" value="<mt:var name="id_shorts_path" />" />
-            <a href="javascript:return false;" onclick="generate()">Generate Shortcode</a><mt:if name="id_shorts_path"><span id="short-link-link"> | <a href="<mt:var name="id_shorts_url" />">Link</a></span></mt:if>          
+            <input type="text"
+                name="id_shorts_path"
+                id="id_shorts_path"
+                value="<mt:var name="id_shorts_path" />"
+                class="text full" />
+            <a href="javascript:return false;"
+                onclick="generate()">Generate&nbsp;Shortcode</a><mt:if name="id_shorts_path"><span id="short-link-link">&nbsp;|&nbsp;<a href="<mt:var name="id_shorts_url" />" target="_blank">Link</a></span></mt:if>
     </mtapp:setting>
 FIELDHTML
-    
+
     $$tmpl =~ s/(<mtapp:setting.*?id="basename".*?<\/mtapp:setting>)/$1$short_field/xsm;
     # <input type="text" name="short_url_path" size="15">
     return 1;
