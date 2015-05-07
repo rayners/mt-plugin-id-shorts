@@ -1,17 +1,9 @@
 # ID Shorts
 
-Author: David Raynes
-Shortcode Additions: Steve Ivy
-Config Assistant Conversion: Byrne Reese
-
-Testing and Generally Inspiring Fellow: Matt Jacobs
-
-## Overview
-
 This plugin provides a way to pass an entry ID or other shortcode to a cgi
 script and have it send the user to the entry permalink.
 
-### Creating the shortcode
+## Creating the shortcode
 
 The plugin allows for several kinds of shortcodes that may be used, all can be
 created from the edit entry screen:
@@ -36,6 +28,10 @@ is resaved, as the old link will no longer be valid.
 
 *WARNING: Changing the shortcode or vanity path for an entry will break any
 existing links to that shortcode.*
+
+## Prerequisites
+
+* Movable Type 4.x, 5.x, or 6.x
 
 ## Installation
 
@@ -110,11 +106,14 @@ domain, for example.
 ## Credits
 
 * IdShorts was written by David Raynes <rayners@rayners.org>
-* Extensive additions were made by Steve Ivy <steve@wallrazer.com>, courtesy
-  of [Endevver Consulting](http://endevver.com)
+* Additions were made by Steve Ivy <steve@wallrazer.com>, courtesy
+  of [Endevver Consulting](http://endevver.com),
+  [Byrne Reese](http://majordojo.com), and Dan Wolfgang of
+  [uiNNOVATIONS](http://uinnovations.com).
 * The NewBase60 javascript used in generating random alpha-numeric shortcodes
   is courtesy Tantek Çelik: <http://tantek.pbworks.com/NewBase60>, translated
   from the original CASSIS by Edward O'Connor <hober0@gmail.com>, and was
   released under CC BY-SA 3.0
   <http://creativecommons.org/licenses/by-sa/3.0/>. Steve Ivy made some tweaks
   to remove `$`s.
+* Testing and Generally Inspiring Fellow: Matt Jacobs
