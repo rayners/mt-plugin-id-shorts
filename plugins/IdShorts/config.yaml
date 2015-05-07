@@ -50,21 +50,21 @@ options:
         fieldset: general
         scope: blog
         order: 3
+    custom_404_blog:
+        label: Custom 404 Page
+        hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML. This is a blog-level 404 page; a system-wide 404 can be configured at the System level plugin Settings screen.'
+        fieldset: general
+        type: page
+        order: 4
+        scope: blog
     custom_404:
         label: Custom 404 Page
-        hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
+        hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML. This system-level page is used for all blogs; configure blog-specific 404 Pages at the blog-level Settings for this plugin.'
         fieldset: general
         type: page
         order: 4
         scope: system
         all_blogs: 1
-    custom_404_blog:
-        label: Custom 404 Page
-        hint: 'Select a page from your system to serve as a 404 page. This page cannot contain PHP, it must be pure HTML.'
-        fieldset: general
-        type: page
-        order: 4
-        scope: blog
 
 config_settings:
     IdShortsScript:
