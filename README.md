@@ -50,6 +50,9 @@ directory.
    url.
 4. Get sent back to the entry or page's permalink.
 
+View ID Shorts Path and Click Count for Pages and Entries by enabling those
+columns in the Manage Entries and Manage Pages screens.
+
 ### Rewrites
 
 This plugin works best when you combine it with a tool like Apache's

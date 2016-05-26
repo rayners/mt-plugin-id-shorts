@@ -81,3 +81,7 @@ object_types:
 tags:
     function:
         entryshorturl: $IdShorts::IdShorts::Tags::short_url
+
+list_properties: $IdShorts::IdShorts::CMS::listing_framework_list_properties
+
+system_filters: $IdShorts::IdShorts::CMS::listing_framework_system_filters

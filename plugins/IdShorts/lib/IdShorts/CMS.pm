@@ -129,6 +129,137 @@ sub pre_save_entry {
     return 1;
 }
 
+# Add "ID Short Path" and "ID Short Clicks" to the Manage Entries and Pages
+# listing framework.
+sub listing_framework_list_properties {
+    return {
+        entry => {
+            id_shorts_path   => _col_path('entry'),
+            id_shorts_clicks => _col_clicks('entry'),
+        },
+        page => {
+            id_shorts_path   => _col_path('page'),
+            id_shorts_clicks => _col_clicks('page'),
+        },
+    };
+}
+
+# In the listing framework, the only difference between the Entry and Page
+# columns comes in the terms to look up the object type.
+sub _col_path {
+    my ($type) = @_;
+    return {
+        label     => 'ID Short Path',
+        meta_type => 'id_shorts_path',
+        col       => 'vchar',
+        base      => '__virtual.string',
+        display   => 'optional',
+        order     => 202,
+        bulk_sort => sub {
+            my ($prop, $objs, $opts) = @_;
+            return sort { $a->id_shorts_path cmp $b->id_shorts_path } @$objs;
+        },
+        raw => sub {
+            my ( $prop, $obj ) = @_;
+            my $meta = $prop->meta_type;
+            $obj->has_meta( $prop->meta_type ) or return;
+            return $obj->$meta;
+        },
+        terms => sub {
+            my $prop = shift;
+            my ( $args, $db_terms, $db_args ) = @_;
+            my $super_terms = $prop->super(@_);
+            $db_args->{joins} ||= [];
+            push @{ $db_args->{joins} },
+                MT->model( $type )->meta_pkg->join_on(
+                    undef,
+                    {   type     => $prop->meta_type,
+                        entry_id => \"= entry_id",
+                        %$super_terms,
+                    },
+                );
+        },
+    };
+}
+
+# In the listing framework, the only difference between the Entry and Page
+# columns comes in the terms to look up the object type.
+sub _col_clicks {
+    my ($type) = @_;
+    return {
+        label     => 'ID Short Click Count',
+        meta_type => 'id_shorts_clicks',
+        col       => 'vinteger',
+        base      => '__virtual.integer',
+        display   => 'optional',
+        order     => 203,
+        bulk_sort => sub {
+            my ($prop, $objs, $opts) = @_;
+            return sort {
+                $a->id_shorts_clicks <=> $b->id_shorts_clicks
+            } @$objs;
+        },
+        raw => sub {
+            my ( $prop, $obj ) = @_;
+            my $meta = $prop->meta_type;
+            $obj->has_meta( $prop->meta_type ) or return;
+            return $obj->$meta;
+        },
+        terms => sub {
+            my $prop = shift;
+            my ( $args, $db_terms, $db_args ) = @_;
+            my $super_terms = $prop->super(@_);
+            $db_args->{joins} ||= [];
+            push @{ $db_args->{joins} },
+                MT->model( $type )->meta_pkg->join_on(
+                    undef,
+                    {   type     => $prop->meta_type,
+                        entry_id => \"= entry_id",
+                        %$super_terms,
+                    },
+                );
+        },
+    };
+}
+
+# Add system filters ("ID Short Path Specified" and "ID Short Has Clicks") for
+# the Entry and Page listing framework pages.
+sub listing_framework_system_filters {
+    my $filters = {
+        has_id_shorts_path => {
+            label => 'ID Short Path Specified',
+            order => 1001,
+            items => [
+                {
+                    type => 'id_shorts_path',
+                    args => {
+                        option => 'contains',
+                        string => '',
+                    },
+                },
+            ],
+        },
+        has_id_shorts_clicks => {
+            label => 'ID Short Has Clicks',
+            order => 1002,
+            items => [
+                {
+                    type => 'id_shorts_clicks',
+                    args => {
+                        option  => 'greater_equal',
+                        integer => '1',
+                    },
+                },
+            ],
+        },
+    };
+
+    return {
+        entry => $filters,
+        page  => $filters,
+    };
+}
+
 1;
 
 __END__
