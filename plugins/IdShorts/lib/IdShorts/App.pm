@@ -17,11 +17,10 @@ sub init {
 sub redirect_mode {
     my $app = shift;
     my $identifier = $app->path_info || $app->param('id');
-
     return $app->error('required') if ( !$identifier );
 
     my $plugin  = MT->component('idshorts');
-    my $blog_id = $app->param('blog_id'); # Or, blog ID may be found below.
+    my $blog_id = $app->param('blog_id') || $ENV{'BLOG_ID'};
 
     require MT::Entry;
 
@@ -51,6 +50,15 @@ sub redirect_mode {
         my $custom_404_id = $blog_id
             ? $plugin->get_config_value('custom_404_blog', "blog:$blog_id")
             : $plugin->get_config_value('custom_404');
+
+        # If Clean Sweep is installed, hand over to it so that any redirects
+        # can be checked for.
+        if ( $app->component('CleanSweep') ) {
+            $app->param('blog_id', $blog_id)
+                if $blog_id;
+            require CleanSweep::CMS;
+            CleanSweep::CMS::report( $app );
+        }
 
         if ($custom_404_id) {
             my $custom_404_page = MT->model('page')->load($custom_404_id)

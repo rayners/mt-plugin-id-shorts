@@ -105,6 +105,10 @@ the system level can handle all 404 requests for a multi-blog installation,
 but a single blog can have a custom 404 or can be served for a different
 domain, for example.
 
+If the [Clean Sweep](https://github.com/endevver/mt-plugin-cleansweep) plugin is
+installed, ID Shorts will redirect to that instead of the 404 page, allowing
+Clean Sweep a chance to do its thing and guess at the intended URL or redirect
+to a 404.
 
 ## Credits
 
