@@ -1,4 +1,3 @@
-
 package IdShorts::Util;
 
 use strict;
@@ -21,6 +20,9 @@ sub short_url_for {
     $ctx->stash( 'blog',    $entry->blog );
     $ctx->stash( 'blog_id', $entry->blog_id );
 
+    my $short_url_path=$entry->id_shorts_path || $entry->id;
+    $ctx->var('id_shorts_path', $short_url_path);
+    
     require MT::Builder;
     my $builder = MT::Builder->new;
     my $tokens = $builder->compile( $ctx, $url_template );
